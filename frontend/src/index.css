@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: 255 255 255;
+    --color-text: 17 24 39;
+    --color-border: 229 231 235;
+    --color-card: 248 249 250;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --color-bg: 15 15 15;
+    --color-text: 229 229 229;
+    --color-border: 42 42 42;
+    --color-card: 26 26 26;
+  }
+
+  * {
+    @apply border-light-border dark:border-dark-border;
+  }
+
+  body {
+    @apply bg-white dark:bg-dark-bg text-light-text dark:text-dark-text transition-colors duration-200;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-200 transform active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white shadow-soft hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100;
+  }
+
+  .btn-outline {
+    @apply border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white dark:bg-dark-card rounded-2xl p-6 shadow-soft dark:shadow-dark-soft border border-gray-100 dark:border-dark-border transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:shadow-xl hover:scale-[1.02] cursor-pointer;
+  }
+
+  /* Input Styles */
+  .input-field {
+    @apply bg-light-card dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 dark:placeholder:text-gray-500;
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-black/50 border border-white/20 dark:border-white/10;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent;
+  }
+
+  /* Loading Spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-4 border-gray-200 dark:border-gray-700 border-t-primary-600;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-gradient {
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Smooth Scroll */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* No Scrollbar */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
