@@ -2,7 +2,7 @@ const axios = require('axios');
 const captainModel = require('../models/captain.model');
 
 module.exports.getAddressCoordinate = async (address) => {
-    const apiKey = process.env.GOOGLE_MAPS_API;
+    const apiKey = process.env.GOOGLE_MAPS_API_KEY;
     
     // If no API key is provided, return mock coordinates for testing
     if (!apiKey || apiKey === 'your_google_maps_api_key_here') {
